@@ -12,12 +12,19 @@ class droplet {
   }
   
   void update() {
-    yVel = yVel + .03;
+    yVel = yVel + .0001;
     xPos = xPos + xVel;
     yPos = yPos + yVel;
+    if (yPos >= height - radius || yPos <= radius) {
+      yVel = -yVel;
+    }
+    if (xPos >= width-radius || xPos <= radius) {
+      xVel = -xVel;
+    }
   }
   
   void drawdroplet() {
+    stroke(0);
     fill(0,0,255);
     ellipse(xPos, yPos, radius, radius);
   }
