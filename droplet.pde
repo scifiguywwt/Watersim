@@ -12,11 +12,16 @@ class droplet {
   }
   
   void update() {
-    yVel = yVel + .0001;
+    yVel = yVel + .1;
     xPos = xPos + xVel;
     yPos = yPos + yVel;
     if (yPos >= height - radius || yPos <= radius) {
-      yVel = -yVel;
+      if (yVel > .1) {
+        yVel = -yVel + .01;
+      } else {
+        yVel = 0;
+        yPos = height - radius;
+      }
     }
     if (xPos >= width-radius || xPos <= radius) {
       xVel = -xVel;
